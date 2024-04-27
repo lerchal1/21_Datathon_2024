@@ -1,13 +1,10 @@
 import torch
 import torch.nn as nn
 
-
-
-
 '''Code from https://www.kaggle.com/code/fanbyprinciple/learning-pytorch-3-coding-an-rnn-gru-lstm'''
 class LSTM(nn.Module):
-    input_size=28
-    window_length=28
+    input_size=5
+    window_length=10
     num_layers=2
     hidden_size=256
     def __init__(self, input_size=input_size, hidden_size=hidden_size, num_layers=num_layers, window_length=window_length):
