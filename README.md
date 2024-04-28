@@ -3,8 +3,8 @@
 #DATATHON 2024 - UBS CHALLENGE
 ##Group Hackermen
 
-Ishaan Bhondele 
-Virgillio Strozzi
-Andrea Ghirlanda
-Alexander Lerch
+- Ishaan Bhondele 
+- Virgillio Strozzi
+- Andrea Ghirlanda
+- Alexander Lerch
 
