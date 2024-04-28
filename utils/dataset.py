@@ -10,27 +10,28 @@ from copy import copy
 from utils.metrics import *
 
 
-def generate_data(df, window_length=10, K=4):
+# Over window
+def generate_data(df, window_length = 4, slid_window = 3, K=2):
     nr_cols = len(df.columns) - 2
 
     inputs = torch.empty((0, window_length, nr_cols))
     labels = torch.empty((0, 1))
     
     # Iterate over col val
-    for brand in df["business_entity_doing_business_as_name"].unique():
+    for idx, brand in enumerate(df["business_entity_doing_business_as_name"].unique()):
         df_filt = df[df["business_entity_doing_business_as_name"] == brand]
         # Drop useless columns
         values = df_filt.drop(["business_entity_doing_business_as_name", "period_end_date"], axis=1).values
         # For now cut-out first elements to have a perfect divisor
         values = values[(len(values) - K)%window_length:len(values) - K]
-        for i in range(0, len(values) - window_length, window_length):
+        for i in range(0, len(values) - window_length - K, slid_window):
             input = torch.tensor(values[i:i + window_length]).unsqueeze(0)
             pred = growth_metric(torch.tensor(values[i+window_length:i+window_length+K])).unsqueeze(0).unsqueeze(0)
             inputs = torch.cat((inputs, input), 0)
             labels = torch.cat((labels, pred), 0)
-
+        if idx % 1000 == 0:
+            print("We have {}/{} iters".format(idx, len(df)))
     return inputs.to(torch.float32), labels.to(torch.float32)
-
 
 class BrandDataset(Dataset):
     def __init__(self, path, window_length=10,  K=4):

@@ -3,7 +3,7 @@ import torch.nn as nn
 
 '''Code from https://www.kaggle.com/code/fanbyprinciple/learning-pytorch-3-coding-an-rnn-gru-lstm'''
 class LSTM(nn.Module):
-    input_size=5
+    input_size=16
     window_length=10
     num_layers=2
     hidden_size=256
