@@ -31,7 +31,6 @@ def generate_data(df, window_length=10, K=4):
 
     return inputs.to(torch.float32), labels.to(torch.float32)
 
-
 class BrandDataset(Dataset):
     def __init__(self, path, window_length=10,  K=4):
         """Gets paths of training samples and outputs train/validation datasets with the same number of classes
