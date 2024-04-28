@@ -1,7 +1,7 @@
 # 21_Datathon_2024
 
-#DATATHON 2024 - UBS CHALLENGE
-##Group Hackermen
+# DATATHON 2024 - UBS CHALLENGE
+## Group Hackermen
 
 - Ishaan Bhondele 
 - Virgillio Strozzi
